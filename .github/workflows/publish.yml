@@ -1,0 +1,13 @@
+name: Manual Registry Publish (Guarded)
+
+on:
+  workflow_dispatch:
+
+jobs:
+  guard:
+    if: ${{ vars.ENABLE_REGISTRY_PUBLISH == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish gate confirmed
+        run: echo "ENABLE_REGISTRY_PUBLISH is true. Proceed with configured PyPI/npm tokens."

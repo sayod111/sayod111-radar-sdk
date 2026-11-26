@@ -1,0 +1,31 @@
+name: SDK CI Verification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  verify-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Compile and check Python SDK
+        run: |
+          python -m compileall -q .
+          if [ -d "python/tests" ]; then python -m unittest discover -s python/tests; fi
+
+  verify-node:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Verify TypeScript/Node SDK
+        run: |
+          npm --prefix javascript test
