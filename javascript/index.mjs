@@ -1,4 +1,4 @@
-export const DEFAULT_BASE_URL = "https://sayod111-radar-api.sayodyalawi.workers.dev";
+export const DEFAULT_BASE_URL = "https://api.sayod111.com";
 
 export class RadarClient {
   constructor({ apiKey = null, baseUrl = DEFAULT_BASE_URL } = {}) {

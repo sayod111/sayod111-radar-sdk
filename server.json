@@ -6,7 +6,7 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://sayod111-radar-api.sayodyalawi.workers.dev/mcp"
+      "url": "https://mcp.sayod111.com/mcp"
     }
   ]
 }

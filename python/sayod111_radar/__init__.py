@@ -7,7 +7,7 @@ import urllib.parse
 import urllib.request
 from typing import Any, Iterator
 
-DEFAULT_BASE_URL = "https://sayod111-radar-api.sayodyalawi.workers.dev"
+DEFAULT_BASE_URL = "https://api.sayod111.com"
 
 
 class RadarAPIError(RuntimeError):
