@@ -1,0 +1,13 @@
+{
+  "name": "@sayod111/radar",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.mjs",
+  "types": "index.d.ts",
+  "description": "Official zero-dependency ESM & TypeScript client for Sayod 111 Intelligence Radar API",
+  "scripts": {
+    "test": "node --test test/client.test.mjs"
+  },
+  "author": "Sayed Ali (Sayod 111)",
+  "license": "MIT"
+}
