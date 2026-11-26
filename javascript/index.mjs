@@ -31,6 +31,7 @@ export class RadarClient {
     return parsed;
   }
 
+  freshness() { return this._req("GET", "/v1/freshness"); }
   health() { return this._req("GET", "/v1/health"); }
   liveAudit(domain, mode = "shopify") { return this._req("POST", "/v1/public/live-audit", { body: { domain, mode } }); }
   riaSearch({ q = "", state = "", mismatchOnly = false, limit = 15 } = {}) {

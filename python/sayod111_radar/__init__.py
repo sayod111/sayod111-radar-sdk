@@ -30,15 +30,15 @@ class RadarClient:
             if clean_p:
                 url += "?" + urllib.parse.urlencode(clean_p)
         headers = {"Accept": "application/json", "User-Agent": "sayod111-radar-py/1.0.0"}
-        if self.api_key:
-            headers["Authorization"] = f"Bearer {self.api_key}"
-        elif auth:
+        if auth and not self.api_key:
             raise ValueError("This endpoint requires a paid api_key (dp_live_...).")
         data = None
         if body is not None:
             data = json.dumps(body).encode("utf-8")
             headers["Content-Type"] = "application/json"
         req = urllib.request.Request(url, data=data, headers=headers, method=method)
+        if self.api_key:
+            req.add_unredirected_header("Authorization", f"Bearer {self.api_key}")
         try:
             with urllib.request.urlopen(req, timeout=self.timeout) as resp:
                 raw = resp.read().decode("utf-8")
@@ -50,6 +50,9 @@ class RadarClient:
             except Exception:
                 parsed = raw
             raise RadarAPIError(exc.code, parsed) from exc
+
+    def freshness(self) -> dict[str, Any]:
+        return self._request("GET", "/v1/freshness")
 
     def health(self) -> dict[str, Any]:
         return self._request("GET", "/v1/health")
