@@ -1,0 +1,32 @@
+name: Publish Python (PyPI) & JS (npm) SDKs with OIDC Provenance
+on:
+  workflow_dispatch:
+  release:
+    types: [published]
+permissions:
+  contents: read
+  id-token: write
+jobs:
+  pypi:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install build
+      - working-directory: python
+        run: python -m build
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: python/dist/
+  npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+      - working-directory: javascript
+        run: npm publish --provenance --access public

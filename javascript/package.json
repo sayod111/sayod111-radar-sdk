@@ -9,5 +9,6 @@
     "test": "node --test test/client.test.mjs"
   },
   "author": "Sayed Ali (Sayod 111)",
-  "license": "MIT"
+  "license": "MIT",
+  "mcpName": "io.github.sayod111/sayod111-radar"
 }

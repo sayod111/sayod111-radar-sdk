@@ -1,0 +1,12 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.sayod111/sayod111-radar",
+  "description": "8-radar B2B API: Shopify, Cyber/DMARC, SEC RIAs/Form D, Biotech/FDA, Recompetes, FMCSA, EU/UK.",
+  "version": "1.0.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://sayod111-radar-api.sayodyalawi.workers.dev/mcp"
+    }
+  ]
+}
